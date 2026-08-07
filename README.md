@@ -754,8 +754,6 @@ Our project demonstrates several modern AI concepts:
 - Enterprise Dashboard
 - Scalable Modular Architecture
 
----
-
 
 
 <div align="center">
