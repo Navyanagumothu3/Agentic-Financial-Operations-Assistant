@@ -248,56 +248,6 @@ Knowledge Sources:
 This improves factual accuracy and policy compliance.
 ---
 
-# 🔄 Complete LangGraph Workflow
-
-```text
-                Customer Complaint
-                        │
-                        ▼
-          ┌────────────────────────┐
-          │ SupportAgentNode       │
-          │ Understand Complaint   │
-          └────────────────────────┘
-                        │
-                        ▼
-          ┌────────────────────────┐
-          │ PaymentAgentNode       │
-          │ Verify Transaction     │
-          └────────────────────────┘
-                        │
-                        ▼
-          ┌────────────────────────┐
-          │ FraudAgentNode         │
-          │ Risk Analysis          │
-          └────────────────────────┘
-                        │
-                        ▼
-          ┌────────────────────────┐
-          │ KnowledgeAgentNode     │
-          │ Retrieve Policies(RAG) │
-          └────────────────────────┘
-                        │
-                        ▼
-          ┌────────────────────────┐
-          │ DecisionAgentNode      │
-          │ Recommend Action       │
-          └────────────────────────┘
-                        │
-                        ▼
-          ┌────────────────────────┐
-          │ ApprovalAgentNode      │
-          │ Human Approval         │
-          └────────────────────────┘
-                        │
-                        ▼
-          ┌────────────────────────┐
-          │ AuditAgentNode         │
-          │ Log Every Action       │
-          └────────────────────────┘
-                        │
-                        ▼
-                 Final Response
-```
 
 ---
 
@@ -410,6 +360,58 @@ The platform provides real-time operational analytics including:
 - LangGraph
 - LangChain
 - Retrieval-Augmented Generation (RAG)
+
+  
+# 🔄 Complete LangGraph Workflow
+
+```text
+                Customer Complaint
+                        │
+                        ▼
+          ┌────────────────────────┐
+          │ SupportAgentNode       │
+          │ Understand Complaint   │
+          └────────────────────────┘
+                        │
+                        ▼
+          ┌────────────────────────┐
+          │ PaymentAgentNode       │
+          │ Verify Transaction     │
+          └────────────────────────┘
+                        │
+                        ▼
+          ┌────────────────────────┐
+          │ FraudAgentNode         │
+          │ Risk Analysis          │
+          └────────────────────────┘
+                        │
+                        ▼
+          ┌────────────────────────┐
+          │ KnowledgeAgentNode     │
+          │ Retrieve Policies(RAG) │
+          └────────────────────────┘
+                        │
+                        ▼
+          ┌────────────────────────┐
+          │ DecisionAgentNode      │
+          │ Recommend Action       │
+          └────────────────────────┘
+                        │
+                        ▼
+          ┌────────────────────────┐
+          │ ApprovalAgentNode      │
+          │ Human Approval         │
+          └────────────────────────┘
+                        │
+                        ▼
+          ┌────────────────────────┐
+          │ AuditAgentNode         │
+          │ Log Every Action       │
+          └────────────────────────┘
+                        │
+                        ▼
+                 Final Response
+```
 
 ## Development Tools
 
