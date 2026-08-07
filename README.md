@@ -16,7 +16,6 @@ An AI-powered multi-agent platform that automates customer support, payment veri
 ![Gemini](https://img.shields.io/badge/Google-Gemini-blueviolet)
 ![License](https://img.shields.io/badge/License-MIT-success)
 
-### 🏆 AI Build 2026 Hackathon Project
 
 </div>
 
