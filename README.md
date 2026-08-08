@@ -1,747 +1,219 @@
-<div align="center">
+# 🏦 Agentic Financial Operations Assistant
 
-# 🤖 Agentic Financial Operations Assistant
-
-### Autonomous Multi-Agent AI Platform for Enterprise Financial Operations
-
-An AI-powered multi-agent platform that automates customer support, payment verification, fraud investigation, policy-aware decision making, and internal approval workflows using **LangGraph**, **Google Gemini**, **React**, **Spring Boot/FastAPI**, and **Retrieval-Augmented Generation (RAG)** while ensuring **Human-in-the-Loop governance**, **Explainable AI**, and **Enterprise Auditability**.
+> An AI-powered banking operations platform that uses **LangGraph Multi-Agent AI**, **FastAPI**, **Spring Boot**, and **React** to automate financial operations while keeping humans in the loop for high-risk actions.
 
 ---
 
-![React](https://img.shields.io/badge/React-18-61DAFB?logo=react)
-![Spring Boot](https://img.shields.io/badge/SpringBoot-3.4-6DB33F?logo=springboot)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?logo=fastapi)
-![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python)
-![LangGraph](https://img.shields.io/badge/LangGraph-Agentic_AI-orange)
-![Gemini](https://img.shields.io/badge/Google-Gemini-blueviolet)
-![License](https://img.shields.io/badge/License-MIT-success)
+## 📌 Overview
 
+Financial operations teams handle customer support, payments, refunds, disputes, fraud investigations, and internal operational requests across multiple systems.
 
-</div>
+The **Agentic Financial Operations Assistant** automates this workflow using specialized AI agents. The system understands customer requests, determines required agents, calculates risk scores, executes explainable decisions, enforces safety self-checks, routes high-risk actions for human approval, and records immutable audit trails.
 
 ---
 
-# 📖 Table of Contents
+## 🎯 Key Features
 
-- Overview
-- Problem Statement
-- Solution
-- Why Agentic AI?
-- Key Features
-- Platform Capabilities
-- System Architecture
-- LangGraph Agent Workflow
-- AI Workflow
-- Explainable AI
-- Human-in-the-Loop
-- Technology Stack
-- Project Structure
-- Installation
-- Dashboard
-- Business Impact
-- Future Roadmap
-
+- **Multi-Agent AI Architecture:** Specialized agents for Routing, Support, Payments, Fraud, Internal Ops, Decision-Making, Self-Checking, Approvals, and Auditing.
+- **Intelligent Request Routing:** Router agent executes only necessary downstream agents to minimize latency and LLM costs.
+- **Deterministic Risk Scoring:** Calculates aggregate risk scores (0–100) using weighted security flags to enforce exact business logic thresholds.
+- **Human-in-the-Loop (HITL) Safeguards:** Automatically pauses high-risk transactions and queues them for manager sign-off before execution.
+- **Explainable Decisions & Self-Check:** Validates all decisions against safety policies before execution, attaching clear reasoning traces to every action.
+- **Immutable Audit Trail:** Comprehensive execution traces stored for full compliance and auditability.
 
 ---
 
-# 🚀 Overview
-
-Financial institutions process thousands of operational requests every day, including payment failures, refund requests, fraud investigations, customer support tickets, and internal approval workflows. These processes often require employees to switch between multiple enterprise systems, manually verify transactions, search organizational policies, and obtain approvals before taking action.
-
-The **Agentic Financial Operations Assistant** is an enterprise-grade AI platform that automates these workflows using a collaborative **multi-agent architecture** powered by **LangGraph**.
-
-Instead of relying on a single chatbot, specialized AI agents work together to understand customer issues, verify transactions, investigate fraud, retrieve company policies, recommend actions, validate decisions, and maintain complete audit trails.
-
-The platform improves operational efficiency while ensuring **security, transparency, explainability, and regulatory compliance**.
-
----
-
-# 🎯 Problem Statement
-
-Financial Operations teams work across multiple disconnected systems:
-
-- Customer Relationship Management (CRM)
-- Payment Gateway
-- Fraud Detection Platform
-- Internal Approval Workflow
-- Company Policy Repository
-- Audit Logging System
-
-Financial analysts manually:
-
-- Review customer support tickets
-- Verify payment transactions
-- Investigate fraud
-- Search refund policies
-- Request managerial approvals
-- Record audit logs
-
-This results in:
-
-- ❌ Slow customer resolution
-- ❌ High operational costs
-- ❌ Human errors
-- ❌ Poor customer experience
-- ❌ Compliance risks
-- ❌ Lack of explainability
-
----
-
-# 💡 Solution
-
-Our solution introduces a **LangGraph-based Multi-Agent AI System** that autonomously coordinates specialized AI agents across enterprise financial workflows.
-
-The platform intelligently:
-
-- Understands customer requests
-- Verifies payment transactions
-- Detects fraud risks
-- Retrieves company policies using RAG
-- Generates explainable recommendations
-- Routes high-risk actions for manager approval
-- Executes approved workflows
-- Maintains complete audit logs
-
----
-
-# 🧠 Why Agentic AI?
-
-Traditional chatbots rely on a single Large Language Model to solve every problem.
-
-Our solution adopts an **Agentic AI Architecture**, where multiple specialized AI agents collaborate, each responsible for a specific financial operation.
-
-### Benefits
-
-- Faster decision making
-- Higher accuracy
-- Modular architecture
-- Enterprise scalability
-- Lower AI inference cost
-- Explainable recommendations
-- Easier maintenance
-
----
-
-# ✨ Key Features
-
-- 🤖 Multi-Agent AI Architecture
-- 💳 Payment Verification
-- 🛡 Fraud Detection
-- 📚 Retrieval-Augmented Generation (RAG)
-- 👨‍💼 Human-in-the-Loop Approval
-- 📊 Enterprise Dashboard
-- 📜 Audit Logging
-- 🔍 Explainable AI
-- 📈 Analytics Dashboard
-- ⚡ Automated Financial Operations
-
----
-
-# ⚡ Platform Capabilities
-
-✔ Customer Support Automation
-
-✔ Payment Verification
-
-✔ Fraud Risk Analysis
-
-✔ Refund Recommendation Engine
-
-✔ Policy Retrieval using RAG
-
-✔ Human Approval Workflow
-
-✔ Audit Trail Generation
-
-✔ Explainable AI Decisions
-
-✔ Enterprise Dashboard
-
-✔ Operational Analytics
-
----
-
-# 🏗 Enterprise Architecture
+## 🏗 System Architecture
 
 ```text
-                        Customer
-
-                           │
-
-                           ▼
-
-                  React Dashboard
-
-                           │
-
-                           ▼
-
-             Spring Boot / FastAPI APIs
-
-                           │
-
-                           ▼
-
-                 LangGraph Orchestrator
-
-                           │
-
-        ┌─────────────────────────────────────┐
-
-        ▼                                     ▼
-
- Support Agent Node                  Payment Agent Node
-
-        │                                     │
-
-        └──────────────┬──────────────────────┘
-
-                       ▼
-
-               Fraud Agent Node
-
-                       │
-
-                       ▼
-
-            Knowledge Agent (RAG)
-
-                       │
-
-                       ▼
-
-            Decision Agent Node
-
-                       │
-
-                       ▼
-
-            Approval Agent Node
-
-                       │
-
-                       ▼
-
-              Audit Agent Node
-
-                       │
-
-                       ▼
-
-                Response to User
+React Frontend (Port 5173)
+       │
+       │ REST API
+       ▼
+Spring Boot Backend (Port 8080)
+       │
+       │ HTTP
+       ▼
+FastAPI AI Layer (Port 8000)
+       │
+       ▼
+ [ Router Agent ]
+       │
+       ├───────────────────────┬───────────────────────┐
+       ▼                       ▼                       ▼
+[Support Agent]         [Payment Agent]         [Fraud Agent]
+       │                       │                       │
+       └───────────────────────┼───────────────────────┘
+                                ▼
+                     [Internal Ops Agent]
+                                │
+                                ▼
+                         [Decision Agent]
+                                │
+                                ▼
+                        [Self-Check Agent]
+                                │
+                                ▼
+                         [Approval Agent]
+                                │
+                                ▼
+                          [Audit Agent]
 ```
 
 ---
 
-# 📚 Retrieval-Augmented Generation (RAG)
+## 📊 Risk Scoring & Handling Protocol
 
-The Knowledge Agent retrieves information from enterprise documents instead of relying solely on LLM memory.
+The deterministic risk engine calculates an aggregate score based on contextual security flags:
 
-Knowledge Sources:
+### Risk Flag Weights
 
-- Company Refund Policy
-- Internal Standard Operating Procedures (SOP)
-- RBI Guidelines
-- Compliance Documentation
+| Flag | Weight |
+|---|---|
+| Velocity Spike Detected | +30 |
+| Unusual / High-Value Beneficiary | +25 |
+| New / Untrusted Device | +20 |
+| High Transaction Amount Threshold | +20 |
+| Failed Login / Security Attempts | +15 |
+| Multiple Existing Disputes | +10 |
+| Verified / Trusted Device | -15 |
 
-This improves factual accuracy and policy compliance.
----
+### Operational Risk Tiers
 
-
----
-
-# 🔍 Explainable AI
-
-Every recommendation generated by the platform includes:
-
-- Decision
-- Confidence Score
-- Fraud Risk
-- Supporting Policy
-- Payment Status
-- AI Explanation
-
-### Example
-
-**Decision:** Refund Approved
-
-**Confidence:** 98%
-
-**Reason:**
-
-> The payment was successfully deducted but the merchant reported a payment failure. Fraud analysis indicates a low-risk customer profile, and the refund complies with the organization's refund policy. Since the refund amount exceeds ₹5000, manager approval is required before execution.
+| Aggregate Score | Risk Level | Operational Action & Handling Protocol |
+|---|---|---|
+| 0 – 20 | Low Risk | Auto-Approve: Executed instantly without manual intervention. |
+| 21 – 40 | Moderate Risk | Standard Review: Passed through standard automated validation checks. |
+| 41 – 60 | Medium Risk | Manager Review: Flagged and held briefly for operational manager sign-off. |
+| 61 – 80 | High Risk | Mandatory HITL: Paused until a manager explicitly approves in the dashboard. |
+| 81 – 100 | Critical Risk | Account Freeze: Blocked immediately and escalated to fraud investigators. |
 
 ---
 
-# 🛡 Human-in-the-Loop
-
-The platform ensures that high-risk financial actions are **never executed automatically**.
-
-### Human Approval Required For
-
-- High-value refunds
-- Account suspension
-- Fraud holds
-- Payment reversals
-- Customer account modifications
-
-This guarantees secure and compliant financial operations.
-
----
-
-# 📚 Retrieval-Augmented Generation (RAG)
-
-The Knowledge Agent retrieves verified information from enterprise documentation rather than relying solely on model memory.
-
-### Knowledge Sources
-
-- Company Refund Policy
-- Internal SOP Documents
-- RBI Compliance Guidelines
-- Fraud Investigation Manual
-- Payment Processing Rules
-
-This significantly improves the accuracy and explainability of AI decisions.
-
----
-
-# 📊 Dashboard
-
-The web dashboard provides a centralized interface for monitoring all financial operations.
-
-### Dashboard Features
-
-- Customer Support Tickets
-- Transaction Monitoring
-- Fraud Alerts
-- Pending Manager Approvals
-- Refund Requests
-- AI Decision Logs
-- Audit History
-- Analytics Dashboard
-
----
-
-# 📈 Analytics
-
-The platform provides real-time operational analytics including:
-
-- Daily Support Requests
-- Payment Success Rate
-- Fraud Detection Rate
-- Refund Statistics
-- Resolution Time
-- AI Confidence Scores
-- Approval Trends
-- Operational Performance
-
----
-
-# 💻 Technology Stack
-
-## Frontend
-
-- React.js
-- TypeScript
-- Tailwind CSS
-- React Router
-
-
-## Backend
-
-- Spring Boot / FastAPI
-- REST APIs
-- Python
-- SQLite
-
-## Artificial Intelligence
-
-- LangGraph
-- LangChain
-- Retrieval-Augmented Generation (RAG)
-
-  
-# 🔄 Complete LangGraph Workflow
+## 📂 Repository Structure
 
 ```text
-                Customer Complaint
-                        │
-                        ▼
-          ┌────────────────────────┐
-          │ SupportAgentNode       │
-          │ Understand Complaint   │
-          └────────────────────────┘
-                        │
-                        ▼
-          ┌────────────────────────┐
-          │ PaymentAgentNode       │
-          │ Verify Transaction     │
-          └────────────────────────┘
-                        │
-                        ▼
-          ┌────────────────────────┐
-          │ FraudAgentNode         │
-          │ Risk Analysis          │
-          └────────────────────────┘
-                        │
-                        ▼
-          ┌────────────────────────┐
-          │ KnowledgeAgentNode     │
-          │ Retrieve Policies(RAG) │
-          └────────────────────────┘
-                        │
-                        ▼
-          ┌────────────────────────┐
-          │ DecisionAgentNode      │
-          │ Recommend Action       │
-          └────────────────────────┘
-                        │
-                        ▼
-          ┌────────────────────────┐
-          │ ApprovalAgentNode      │
-          │ Human Approval         │
-          └────────────────────────┘
-                        │
-                        ▼
-          ┌────────────────────────┐
-          │ AuditAgentNode         │
-          │ Log Every Action       │
-          └────────────────────────┘
-                        │
-                        ▼
-                 Final Response
-```
-
-## Development Tools
-
-- Git
-- GitHub
-- VS Code
-- Postman
-
----
-
-# 📂 Project Structure
-
-```text
-agentic-financial-ops-assistant/
-
-├── frontend/
-│   ├── components/
-│   ├── pages/
-│   ├── services/
-│   ├── hooks/
-│   └── assets/
-│
-├── backend/
-│   ├── agents/
-│   │   ├── SupportAgentNode.py
-│   │   ├── PaymentAgentNode.py
-│   │   ├── FraudAgentNode.py
-│   │   ├── KnowledgeAgentNode.py
-│   │   ├── DecisionAgentNode.py
-│   │   ├── ApprovalAgentNode.py
-│   │   └── AuditAgentNode.py
-│   │
-│   ├── routers/
-│   ├── services/
-│   ├── database/
-│   ├── models/
-│   ├── schemas/
-│   ├── rag/
-│   └── utils/
-│
-├── docs/
-├── screenshots/
-├── README.md
-└── requirements.txt
+AI-BANKING-AGENT/
+├── agents/                  # LangGraph specialized agents
+│   ├── router_agent.py
+│   ├── support_agent.py
+│   ├── payment_agent.py
+│   ├── fraud_agent.py
+│   ├── internal_ops_agent.py
+│   ├── decision_agent.py
+│   ├── self_check_agent.py
+│   ├── approval_agent.py
+│   └── audit_agent.py
+├── api/                     # API routes
+│   └── routes.py
+├── Backend/                 # Spring Boot enterprise application
+├── data/                    # Data sources (JSON/DB schemas)
+├── docs/                    # Documentation and specs
+├── frontend/                # React dashboard frontend
+├── graph/                   # LangGraph workflow compiler & state schemas
+│   └── workflow.py
+├── logs/                    # Local audit logs
+├── models/                  # Pydantic data models
+├── prompts/                 # System prompts for AI agents
+├── services/                # Risk engine & business logic services
+├── utils/                   # Shared LLM utility functions
+│   └── llm.py
+├── docker-compose.yml       # Multi-container orchestration setup
+├── main.py                  # FastAPI server entrypoint
+└── requirements.txt         # Python dependencies
 ```
 
 ---
 
-# ⚙ Installation
-
-## Clone Repository
-
-```bash
-git clone https://github.com/yourusername/agentic-financial-ops-assistant.git
-```
-
-Backend
-
-```bash
-cd backend
-
-pip install -r requirements.txt
-
-uvicorn main:app --reload
-```
-
-Frontend
-
-```bash
-cd frontend
-
-npm install
-
-npm run dev
-```
-
-
-# 🌐 REST API
+## 🔌 REST API Endpoints
 
 | Method | Endpoint | Description |
-|----------|-----------|------------------------|
-| POST | /ticket | Create Support Ticket |
-| POST | /analyze | Analyze Customer Issue |
-| GET | /transactions | Retrieve Transactions |
-| GET | /fraud | Fraud Investigation |
-| POST | /approval | Manager Approval |
-| POST | /refund | Process Refund |
-| GET | /dashboard | Dashboard Metrics |
-| GET | /audit | Audit Logs |
+|---|---|---|
+| GET | `/health` | Check backend and AI service health status |
+| GET | `/ui` | Open the banking operations dashboard UI |
+| POST | `/operate` | Submit a financial request and trigger the LangGraph workflow |
+| POST | `/approve` | Approve or reject a pending Human-in-the-Loop operation |
 
----
-
-
-# 🎬 Demo Workflow
-
-### Step 1
-
-Customer submits a complaint.
-
-> "₹20,000 was deducted but payment failed."
-
-↓
-
-### Step 2
-
-**SupportAgentNode**
-
-- Understands customer intent
-- Identifies issue category
-- Generates issue summary
-
-↓
-
-### Step 3
-
-**PaymentAgentNode**
-
-- Verifies payment status
-- Checks transaction history
-- Determines refund eligibility
-
-↓
-
-### Step 4
-
-**FraudAgentNode**
-
-- Calculates fraud score
-- Detects suspicious behavior
-- Classifies transaction risk
-
-↓
-
-### Step 5
-
-**KnowledgeAgentNode**
-
-- Retrieves refund policies
-- Searches internal SOPs
-- Retrieves RBI guidelines using RAG
-
-↓
-
-### Step 6
-
-**DecisionAgentNode**
-
-Combines outputs from all previous agents.
-
-Example
+### Sample Request (`POST /operate`)
 
 ```json
 {
-    "decision":"REFUND",
-    "confidence":98
+  "customer_id": "C1001",
+  "account_id": "A2001",
+  "request_type": "refund",
+  "amount": 7500,
+  "description": "Customer was charged twice",
+  "channel": "chat"
 }
 ```
 
-↓
-
-### Step 7
-
-**ApprovalAgentNode**
-
-Checks whether human approval is required.
-
-If
-
-Refund > ₹5000
-
-↓
-
-Manager Approval Required
-
-Otherwise
-
-↓
-
-Auto Execute
-
-↓
-
-### Step 8
-
-**AuditAgentNode**
-
-Stores
-
-- Customer ID
-- Transaction ID
-- AI Decision
-- Approval Status
-- Reason
-- Confidence
-- Timestamp
-
-↓
-
-### Step 9
-
-Customer receives final response.
-
----
-
-# 📈 Business Impact
-
-Our solution significantly improves enterprise financial operations by automating repetitive manual workflows while ensuring transparency and regulatory compliance.
-
-## Key Benefits
-
-✅ Faster Customer Resolution
-
-Reduce ticket resolution time by up to **70%**
-
----
-
-✅ Improved Fraud Detection
-
-Detect suspicious financial transactions using AI-powered fraud analysis.
-
----
-
-✅ Reduced Operational Costs
-
-Automate repetitive verification tasks performed by financial analysts.
-
----
-
-✅ Better Customer Experience
-
-Customers receive faster and more accurate responses.
-
----
-
-✅ Enterprise Compliance
-
-Human approval ensures policy compliance for high-risk financial operations.
-
----
-
-✅ Explainable AI
-
-Every recommendation includes a detailed explanation and confidence score.
-
----
-
-# 💰 Estimated AI Cost per Decision
-
-| Component | Cost |
-|------------|------|
-| Support Agent | $0.001 |
-| Payment Agent | $0.001 |
-| Fraud Agent | $0.001 |
-| Knowledge Agent (RAG) | $0.001 |
-| Decision Agent | $0.001 |
-| Audit Logging | $0.0005 |
-
-### Total Estimated Cost
-
-≈ **$0.005 – $0.007 per financial decision**
-
-Using RAG and specialized agents minimizes expensive LLM calls and improves overall efficiency.
-
----
-
-# 🔒 Security & Compliance
-
-Our platform follows enterprise-grade security practices.
-
-## Security Features
-
-- Role-Based Access Control (RBAC)
-- Secure API Authentication
-- Encrypted Data Storage
-- Secure Transaction Processing
-- Protected Customer Information
-- Audit Logging
-- Human Approval for Critical Actions
-
-## Compliance
-
-- RBI Guidelines
-- Data Privacy Principles
-- Explainable AI
-- Auditability
-- Human-in-the-Loop Governance
-
----
-
-# 🚀 Future Roadmap
-
-- Real Banking API Integration
-- Voice & Multi-language Support
-- Advanced AI Fraud Detection
-- Mobile Application
-- Cloud Deployment
-- Real-time Analytics
-
----
-
-# 📊 Innovation Highlights
-
-Our project demonstrates several modern AI concepts:
-
-- Multi-Agent AI Architecture
-- LangGraph Agent Orchestration
-- Retrieval-Augmented Generation (RAG)
-- Human-in-the-Loop Approval
-- Enterprise Workflow Automation
-- Financial Decision Intelligence
-- Auditability and Compliance
-
----
-
-# 🏆 Achievements
-
-- Enterprise Multi-Agent AI Platform
-- Explainable Financial Decision System
-- Human-in-the-Loop Workflow
-- AI-powered Fraud Detection
-- Policy-aware Recommendation Engine
-- Complete Audit Logging
-- Enterprise Dashboard
-- Scalable Modular Architecture
-
-
-
-<div align="center">
-
-
-</div>
+### Sample Response
+
+```json
+{
+  "case_id": "729F9701",
+  "decision": "approve",
+  "action": "issue refund pending manager approval",
+  "approval_required": true,
+  "approval_status": "pending",
+  "reason": "Refund exceeds automatic approval threshold",
+  "agent_trace": [
+    "Support Agent",
+    "Payment Agent",
+    "Fraud Agent",
+    "Internal Ops Agent",
+    "Decision Agent",
+    "Self-Check Agent",
+    "Approval Agent",
+    "Audit Agent"
+  ]
+}
 ```
 
 ---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python 3.13+
+- Java 17+ & Maven
+- Node.js & npm
+
+### 1. AI Layer (FastAPI & LangGraph)
+
+```bash
+python -m venv venv
+# On Windows: venv\Scripts\activate
+# On macOS/Linux: source venv/bin/activate
+venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn main:app --reload --port 8000
+```
+
+### 2. Backend Service (Spring Boot)
+
+```bash
+cd Backend
+mvn clean install
+mvn spring-boot:run
+```
+
+### 3. Frontend Dashboard (React)
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser to access the dashboard.
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend:** React, JavaScript, HTML, CSS
+- **Backend:** Java, Spring Boot, REST APIs, Maven
+- **AI Service:** Python, FastAPI, LangGraph, LangChain
+- **LLM Integration:** Ollama / Cloud Models
