@@ -1,0 +1,42 @@
+[
+  {
+    "ticket_id": "TKT-001",
+    "customer_id": "C1001",
+    "channel": "chat",
+    "subject": "Duplicate charge on UPI",
+    "status": "open",
+    "priority": "high",
+    "created_at": "2026-08-05T10:30:00",
+    "transcript": "Customer: I was charged twice for my electricity bill payment of ₹7,500.\nAgent: I understand your concern. Let me look up the transaction."
+  },
+  {
+    "ticket_id": "TKT-002",
+    "customer_id": "C1001",
+    "channel": "call",
+    "subject": "Account statement request",
+    "status": "closed",
+    "priority": "low",
+    "created_at": "2026-07-28T14:00:00",
+    "transcript": "Customer requested last 3 months statement. Sent via email."
+  },
+  {
+    "ticket_id": "TKT-003",
+    "customer_id": "C1002",
+    "channel": "email",
+    "subject": "Failed NEFT transfer",
+    "status": "open",
+    "priority": "medium",
+    "created_at": "2026-08-06T09:15:00",
+    "transcript": "Customer: My NEFT of ₹25,000 to vendor failed but amount was debited.\nAgent: Checking with payment gateway."
+  },
+  {
+    "ticket_id": "TKT-004",
+    "customer_id": "C1003",
+    "channel": "chat",
+    "subject": "Suspicious login alert",
+    "status": "escalated",
+    "priority": "critical",
+    "created_at": "2026-08-07T08:00:00",
+    "transcript": "Customer: I got alert for login from unknown device in Hyderabad.\nAgent: Escalating to fraud team immediately."
+  }
+]

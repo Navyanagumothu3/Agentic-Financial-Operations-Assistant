@@ -1,0 +1,58 @@
+[
+  {
+    "txn_id": "TXN-001",
+    "account_id": "A2001",
+    "customer_id": "C1001",
+    "amount": 7500.0,
+    "type": "UPI",
+    "status": "completed",
+    "merchant": "BESCOM Electricity",
+    "timestamp": "2026-08-05T10:25:00",
+    "reference": "UPI-REF-8821"
+  },
+  {
+    "txn_id": "TXN-002",
+    "account_id": "A2001",
+    "customer_id": "C1001",
+    "amount": 7500.0,
+    "type": "UPI",
+    "status": "completed",
+    "merchant": "BESCOM Electricity",
+    "timestamp": "2026-08-05T10:26:00",
+    "reference": "UPI-REF-8822",
+    "note": "Possible duplicate"
+  },
+  {
+    "txn_id": "TXN-003",
+    "account_id": "A3001",
+    "customer_id": "C1002",
+    "amount": 25000.0,
+    "type": "NEFT",
+    "status": "failed",
+    "merchant": "Vendor ABC Pvt Ltd",
+    "timestamp": "2026-08-06T09:00:00",
+    "reference": "NEFT-REF-4412"
+  },
+  {
+    "txn_id": "TXN-004",
+    "account_id": "A4001",
+    "customer_id": "C1003",
+    "amount": 125000.0,
+    "type": "IMPS",
+    "status": "completed",
+    "merchant": "Unknown Beneficiary",
+    "timestamp": "2026-08-07T07:55:00",
+    "reference": "IMPS-REF-9901"
+  },
+  {
+    "txn_id": "TXN-005",
+    "account_id": "A2001",
+    "customer_id": "C1001",
+    "amount": 200.0,
+    "type": "UPI",
+    "status": "completed",
+    "merchant": "Swiggy",
+    "timestamp": "2026-08-04T19:30:00",
+    "reference": "UPI-REF-7701"
+  }
+]

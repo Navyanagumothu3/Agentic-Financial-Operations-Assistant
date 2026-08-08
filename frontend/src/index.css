@@ -1,0 +1,9 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: #0b1120;
+  color: #e8edf5;
+  -webkit-font-smoothing: antialiased;
+}
+#root { min-height: 100vh; }

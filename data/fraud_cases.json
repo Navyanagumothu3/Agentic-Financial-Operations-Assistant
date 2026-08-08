@@ -1,0 +1,32 @@
+[
+  {
+    "case_id": "FRD-001",
+    "customer_id": "C1003",
+    "status": "under_investigation",
+    "risk_score": 85,
+    "risk_flags": ["velocity spike", "new device", "unusual beneficiary"],
+    "investigation_notes": "Large IMPS to unknown beneficiary from new device. Customer claims no knowledge.",
+    "opened_at": "2026-08-07T08:05:00",
+    "assigned_to": "fraud_analyst_01"
+  },
+  {
+    "case_id": "FRD-002",
+    "customer_id": "C1002",
+    "status": "closed_cleared",
+    "risk_score": 35,
+    "risk_flags": ["multiple failed payments"],
+    "investigation_notes": "Failed NEFT due to incorrect IFSC. No fraud detected.",
+    "opened_at": "2026-08-06T10:00:00",
+    "assigned_to": "fraud_analyst_02"
+  },
+  {
+    "case_id": "FRD-003",
+    "customer_id": "C1001",
+    "status": "closed_cleared",
+    "risk_score": 15,
+    "risk_flags": [],
+    "investigation_notes": "Duplicate charge confirmed as merchant error. Refund processed.",
+    "opened_at": "2026-07-15T11:00:00",
+    "assigned_to": "fraud_analyst_01"
+  }
+]

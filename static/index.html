@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banking Ops Assistant</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #eef4ff;
+        --card: #ffffff;
+        --border: #d7e2f1;
+        --text: #14213d;
+        --muted: #5f6f84;
+        --accent: #2563eb;
+        --accent2: #0f766e;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Inter, Arial, sans-serif;
+        background: linear-gradient(135deg, #f7fbff 0%, var(--bg) 100%);
+        color: var(--text);
+      }
+      .app { max-width: 1280px; margin: 0 auto; padding: 24px; }
+      .hero, .panel { background: var(--card); border: 1px solid var(--border); border-radius: 20px; box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08); }
+      .hero { padding: 24px; margin-bottom: 18px; display: grid; gap: 12px; }
+      .hero h1 { margin: 0; font-size: 2rem; }
+      .muted { color: var(--muted); }
+      .pill { display: inline-block; padding: 5px 10px; border-radius: 999px; background: #dbeafe; color: #1d4ed8; font-size: 0.82rem; font-weight: 700; width: fit-content; }
+      .grid { display: grid; gap: 20px; grid-template-columns: 1.2fr 0.8fr; }
+      .panel { padding: 20px; }
+      .panel h2 { margin-top: 0; }
+      label { display: block; margin-top: 12px; font-weight: 600; font-size: 0.95rem; }
+      input, select, textarea, button { width: 100%; padding: 10px 12px; margin-top: 6px; border-radius: 10px; border: 1px solid var(--border); font-size: 0.95rem; }
+      textarea { min-height: 96px; resize: vertical; }
+      button { margin-top: 16px; background: var(--accent); color: white; border: none; font-weight: 700; cursor: pointer; }
+      button:hover { filter: brightness(0.95); }
+      .status { margin-top: 14px; padding: 12px; border-radius: 12px; background: #f8fafc; border: 1px solid var(--border); white-space: pre-wrap; max-height: 280px; overflow: auto; }
+      .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+      .stat { padding: 12px; background: #f8fbff; border: 1px solid var(--border); border-radius: 12px; }
+      .stat strong { display: block; font-size: 1.1rem; }
+      .case-list { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 10px; }
+      .case-item { padding: 12px; border: 1px solid var(--border); border-radius: 12px; background: #fbfdff; }
+      .case-item strong { display: block; margin-bottom: 4px; }
+      .helper { font-size: 0.9rem; color: var(--muted); margin-top: 6px; }
+      @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .stats { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <section class="hero">
+        <div class="pill">Real-time Banking Operations</div>
+        <h1>Agentic financial operations dashboard</h1>
+        <p class="muted">Submit a request and let the support, payment, fraud, decision, approval, and audit agents work together in one live workflow.</p>
+      </section>
+
+      <div class="grid">
+        <section class="panel">
+          <h2>New operation</h2>
+          <div class="stats">
+            <div class="stat"><strong id="stat_cases">0</strong>Cases</div>
+            <div class="stat"><strong id="stat_decisions">0</strong>Decisions</div>
+            <div class="stat"><strong id="stat_approval">0</strong>Approval Pending</div>
+          </div>
+          <label>Customer ID</label>
+          <input id="customer_id" value="C1001" />
+          <label>Account ID</label>
+          <input id="account_id" value="A2001" />
+          <label>Request Type</label>
+          <select id="request_type">
+            <option value="support">Support</option>
+            <option value="refund">Refund</option>
+            <option value="fraud">Fraud</option>
+          </select>
+          <label>Amount</label>
+          <input id="amount" value="7500" />
+          <label>Description</label>
+          <textarea id="description">Duplicate charge on card</textarea>
+          <label>Channel</label>
+          <select id="channel">
+            <option value="chat">Chat</option>
+            <option value="call">Call</option>
+            <option value="email">Email</option>
+          </select>
+          <button onclick="runRequest()">Run assistant workflow</button>
+          <div class="helper">The request will be sent to the backend and processed by the agents.</div>
+          <div id="result" class="status">Waiting for request...</div>
+        </section>
+
+        <section class="panel">
+          <h2>Recent cases</h2>
+          <ul id="cases" class="case-list"></ul>
+        </section>
+      </div>
+    </div>
+
+    <script>
+      const apiBase = 'http://127.0.0.1:8000';
+
+      async function runRequest() {
+        const payload = {
+          customer_id: document.getElementById('customer_id').value,
+          account_id: document.getElementById('account_id').value,
+          request_type: document.getElementById('request_type').value,
+          amount: Number(document.getElementById('amount').value),
+          description: document.getElementById('description').value,
+          channel: document.getElementById('channel').value,
+        };
+
+        const resultBox = document.getElementById('result');
+        resultBox.textContent = 'Processing...';
+
+        try {
+          const response = await fetch(`${apiBase}/operate`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          const data = await response.json();
+          resultBox.textContent = JSON.stringify(data, null, 2);
+          await loadCases();
+        } catch (error) {
+          resultBox.textContent = 'Error: ' + error.message;
+        }
+      }
+
+      async function loadCases() {
+        const list = document.getElementById('cases');
+        try {
+          const response = await fetch(`${apiBase}/cases`);
+          const cases = await response.json();
+          document.getElementById('stat_cases').textContent = cases.length;
+          const pendingApproval = cases.filter((entry) => entry.approval_required).length;
+          document.getElementById('stat_approval').textContent = pendingApproval;
+          document.getElementById('stat_decisions').textContent = cases.filter((entry) => entry.decision).length;
+          list.innerHTML = '';
+          if (!cases.length) {
+            list.innerHTML = '<li class="case-item">No cases yet.</li>';
+            return;
+          }
+          cases.slice(0, 6).forEach((entry) => {
+            const item = document.createElement('li');
+            item.className = 'case-item';
+            item.innerHTML = `<strong>${entry.case_id || 'case'}</strong>${entry.request_type} · ${entry.decision || 'pending'} · ${entry.approval_status || 'n/a'}`;
+            list.appendChild(item);
+          });
+        } catch (error) {
+          list.innerHTML = '<li class="case-item">Unable to load cases.</li>';
+        }
+      }
+
+      loadCases();
+    </script>
+  </body>
+</html>
